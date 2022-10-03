@@ -15,7 +15,7 @@ function App() {
 
   const [filter, setFilter] = useState (produtos)
 
-  
+  const [valor, setvalor] = useState(0)
 
   useEffect(() => {
     Api.get('/products')
@@ -32,8 +32,8 @@ function App() {
     <div className="App">
       <Header produtos={produtos} setFilter={setFilter}/>
       <div className='loja'>
-        <Productlist setCarrinho={setCarrinho} list={produtos} carrinho={carrinho} filter={filter}/>
-        <Carrinho setCarrinho={setCarrinho} carrinho={carrinho}/>
+        <Productlist setvalor={setvalor} setCarrinho={setCarrinho} list={produtos} carrinho={carrinho} filter={filter}/>
+        <Carrinho setvalor={setvalor} valor={valor} setCarrinho={setCarrinho} carrinho={carrinho}/>
       </div>
     </div>
   );

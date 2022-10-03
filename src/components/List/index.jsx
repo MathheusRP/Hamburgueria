@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { ProductList } from "./listStyle"
 
 
-export const Productlist = ({list, setCarrinho, carrinho, filter}) => {
+export const Productlist = ({list, setCarrinho, carrinho, filter, setvalor}) => {
 
 
     const addCarrinho = (event) => {
@@ -29,7 +29,11 @@ export const Productlist = ({list, setCarrinho, carrinho, filter}) => {
                 ) : (
 
                 setCarrinho((produtos) =>  [...produtos, {...produto, quantidade: 1}])
+
                 )  
+
+                setvalor((valor) => valor + produto.price)
+
             }
         })    
     }

@@ -3,9 +3,9 @@ import img from '../../assets/img/product.png'
 import { SectionCarrinho } from "./carrinhoStyle"
 import { useState } from "react"
 
-export const Carrinho = ({carrinho, setCarrinho}) => {
+export const Carrinho = ({carrinho, setCarrinho, valor, setvalor}) => {
 
-    const [itens, setItens] = useState([])
+    
 
     const remove = (event) => {
 
@@ -13,19 +13,27 @@ export const Carrinho = ({carrinho, setCarrinho}) => {
 
         const filtro = carrinho.filter(element => {
             if(element.id != event.target.id){
+                
                 return element
-                // console.log(element)
+
             }
+
+            setvalor(valor - element.price)
+
         })
-        // console.log(filtro)
+
         setCarrinho(filtro)
+        
     }
 
     const deleteAll =() => {
 
         setCarrinho([])
+        setvalor(0)
+       
     }
         
+
 
     // console.log(carrinho)
     return (
@@ -70,7 +78,7 @@ export const Carrinho = ({carrinho, setCarrinho}) => {
             <SectionCarrinho>
                 <div>
                     <p>Total</p>
-                    <span>R$ 40,00</span>
+                    <span>R$ {valor.toFixed(2)}</span>
                 </div>
                 <button onClick={deleteAll}>Remover todos</button>
             </SectionCarrinho>
